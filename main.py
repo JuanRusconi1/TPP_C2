@@ -42,7 +42,8 @@ def calcular_ganador(tablero: list, jugador1: dict, jugador2: dict):
   for i in range(3):
     for j in range(3):
       tab.append(tablero[i][j])
-  tab
+  if not tab.__contains__(0):
+    return 'Ninguno (Empate)'
   posicionesGanadoras = [
     [0, 1, 2],
     [3, 4, 5],
