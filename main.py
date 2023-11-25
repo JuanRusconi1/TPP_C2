@@ -36,6 +36,7 @@ def tablero_texto(tablero: list) :
     for j in range(3):
       tab += f"{(tablero[i][j])}"
   return tab
+
 def calcular_ganador(tablero: list, jugador1: dict, jugador2: dict):
   tab = []
   for i in range(3):
@@ -78,7 +79,6 @@ def jugar_tateti() :
   print('El ganador es', ganador)
 
   agregar_partida({"JUGADOR1": jugador1["nombre"],"JUGADOR2": jugador2["nombre"], "GANADOR":ganador, "RESULTADO": tablero_texto(tablero)})
-  print(tablero_texto(tablero))
 
 def mostrar_partidas() :
   partidas = listar_partidas()
@@ -88,10 +88,11 @@ def mostrar_partidas() :
     print(f"Jugador 1️⃣: {partida['JUGADOR1']} (X) | Jugador 2️⃣: {partida['JUGADOR2']} (O)") 
     print("")
     resultado = list(partida["RESULTADO"])
-    for i in range(3) :
-      for j in range(3) :
-        print(end=f"{resultado[i + j]}  ")
-      print("")
+    for i in range(9) :
+      print(end=f"{resultado[i]}  ")
+      if (i + 1) % 3 == 0:
+        print("")
+    
     print(f"🏆 Ganador: {partida['GANADOR']}")
 
 print("Bienvenido al ta-te-ti")
