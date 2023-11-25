@@ -12,23 +12,23 @@ def mostrar_tablero() :
 def agregar_pieza(jugador) :
   print("")
   print(f"Turno del jugador {jugador['nombre']}")
-  print("Ingrese el numero de fila y numero de columna donde quiere poner su ficha")
+  print("➡️ Ingrese el numero de fila y numero de columna donde quiere poner su ficha")
   while ValueError :
     try :
       f = int(input("fila: ")) - 1
       c = int(input("columna: ")) - 1
       while not f in [0, 1, 2] or not c in [0, 1, 2] :
-        print("El numero no puede ser mayor a 3 ni menor que 1")
+        print("❌ El numero no puede ser mayor a 3 ni menor que 1")
         f = int(input("fila: ")) - 1
         c = int(input("columna: ")) - 1
     except ValueError :
-      print("Solo puedes ingresar numeros")
+      print("❌ Solo puedes ingresar numeros")
     else : 
       if not tablero[f][c] :
         tablero[f][c] = jugador["ficha"]
         break
       else :
-        print("Esta casilla ya esta ocupada, Ingrese otra posición")
+        print("❌ Esta casilla ya esta ocupada, Ingrese otra posición")
 
 def tablero_texto(tablero: list) :
   tab = ""
@@ -41,7 +41,7 @@ def calcular_ganador(tablero: list, jugador1: dict, jugador2: dict):
   for i in range(3):
     for j in range(3):
       tab.append(tablero[i][j])
-  tablero = tab
+  tab
   posicionesGanadoras = [
     [0, 1, 2],
     [3, 4, 5],
@@ -54,17 +54,17 @@ def calcular_ganador(tablero: list, jugador1: dict, jugador2: dict):
   ] 
   for posiciones in posicionesGanadoras:
     pos1, pos2 , pos3 = posiciones
-    if tablero[pos1] and tablero[pos1] == tablero[pos2] == tablero[pos3]:
-      return jugador1["nombre"] if tablero[pos1] == "X" else jugador2["nombre"]
+    if tab[pos1] and tab[pos1] == tab[pos2] == tab[pos3]:
+      return jugador1["nombre"] if tab[pos1] == "X" else jugador2["nombre"]
   
   return False
 
 
 
 def jugar_tateti() :
-  print("Ingrese los nombres de los jugadores.")
-  jugador1 = {"nombre": input("Jugador 1: "), "ficha": "X"}
-  jugador2 = {"nombre": input("Jugador 2: "), "ficha": "O"}
+  print("🔠 Ingrese los nombres de los jugadores.")
+  jugador1 = {"nombre": input("Jugador 1️⃣: "), "ficha": "X"}
+  jugador2 = {"nombre": input("Jugador 2️⃣: "), "ficha": "O"}
 
   while not calcular_ganador(tablero=tablero, jugador1=jugador1, jugador2=jugador2) :
 
@@ -85,21 +85,21 @@ def mostrar_partidas() :
   for partida in partidas :
     print("")
     print(f"Partida N° {partida['ID']}")
-    print(f"Jugador 1: {partida['JUGADOR1']} (X) | Jugador 2: {partida['JUGADOR2']} (O)") 
+    print(f"Jugador 1️⃣: {partida['JUGADOR1']} (X) | Jugador 2️⃣: {partida['JUGADOR2']} (O)") 
     print("")
     resultado = list(partida["RESULTADO"])
     for i in range(3) :
       for j in range(3) :
         print(end=f"{resultado[i + j]}  ")
       print("")
-    print(f"Ganador: {partida['GANADOR']}")
+    print(f"🏆 Ganador: {partida['GANADOR']}")
 
 print("Bienvenido al ta-te-ti")
-print("Si quiere ver las partidas anteriores ingrese '1' por consola")
-print("Si quiere jugar al juego ingrese '2' por consola")
-print("Para salir del programa ingrese '0' por consola")
+
 while ValueError :
-  print("")
+  print("\n📖 Si quiere ver las partidas anteriores ingrese '1' por consola")
+  print("🕹️ Si quiere jugar al juego ingrese '2' por consola")
+  print("🔴 Para salir del programa ingrese '0' por consola")
   try :
     pregunta = int(input("Ingrese un numero: "))
     while pregunta > 2 or pregunta < 0:
